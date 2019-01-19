@@ -1,0 +1,7 @@
+# Files generate when crawling
+*.csv
+*.log
+
+# Testing files
+test.py
+redefine_postid.py
