@@ -1,12 +1,14 @@
 # -*- coding: UTF-8 -*-
 from time import sleep
 from random import randint
-from selenium.webdriver import Chrome
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 import csv
 import re
 import os
+import glob
 import pandas as pd
 
 def Get_Content(driver, page, post_id):
@@ -25,16 +27,19 @@ def Get_Content(driver, page, post_id):
 
 # get files dir
 files_path = os.getcwd() + '/postid_files/'
-file_list = os.listdir(files_path)
+# file_list = os.listdir(files_path)
+csv_list = glob.glob("postid_files/*.csv")
 
-driver = Chrome("../driver/chromedriver")
+chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument('--headless')
+driver = webdriver.Chrome("../driver/chromedriver", options=chrome_options)
 
-for f in file_list:
+for f in csv_list:
     # read posts data from csv file
-    post_df = pd.read_csv('postid_files/' + f, encoding='utf-8-sig')
+    post_df = pd.read_csv(f, encoding='utf-8-sig')
     post_header = list(post_df)
     post_list = post_df.values.tolist()
-    page = f.split('_')[0]
+    page = re.match(r"^.*\/(.*)\_.*$", f).group(1)
 
     content_list = []
     error_list = []

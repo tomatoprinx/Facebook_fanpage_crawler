@@ -1,7 +1,8 @@
 # -*- coding: UTF-8 -*-
 from time import sleep
 from random import randint
-from selenium.webdriver import Chrome
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 import csv
@@ -11,7 +12,10 @@ import pandas as pd
 maxpost = 100
 page = "name of fan page"
 url = "https://www.facebook.com/pg/" + page + "/posts/"
-driver = Chrome("../driver/chromedriver")
+
+chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument('--headless')
+driver = webdriver.Chrome("../driver/chromedriver", options=chrome_options)
 driver.get(url)
 
 # retrieve page id
@@ -28,9 +32,6 @@ try:
         feed_list = [i.get_attribute('value') for i in driver.find_elements_by_name('ft_ent_identifier')]
         if (len(feed_list) >= maxpost):
             print('Done! Collected ', len(feed_list), ' posts from ', page_id)
-            break
-        else:
-            print('Done! This page contained less than ', maxpost, ' posts!')
             break
 finally:
     driver.quit()
