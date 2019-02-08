@@ -14,3 +14,10 @@
     * the data will be saved in content_files as csv files.
 ### get_reaction.py
     * collected numbers of each reaction for the posts.
+
+### get_engagements.py
+    * collect number of comments and shares.
+
+### screenshot_post.py
+    * take screenshots of each posts.
+    * generate .png files.

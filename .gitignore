@@ -1,6 +1,7 @@
 # Files generate when crawling
 *.csv
 *.log
+*.png
 
 # Testing files
 test.py
