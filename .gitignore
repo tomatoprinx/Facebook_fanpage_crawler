@@ -4,5 +4,5 @@
 *.png
 
 # Testing files
-test.py
+test*.py
 redefine_postid.py
