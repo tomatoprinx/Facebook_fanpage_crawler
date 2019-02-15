@@ -31,7 +31,6 @@ class FacebookPostIdScraper():
         while last_post_time > begin_catch_time:
             js = "window.scrollTo(0, document.body.scrollHeight);"
             self.driver.execute_script(js)
-            print(i)
             last_post_time = self.get_last_post_time(page)
 
         raw_feed = [i.get_attribute('data-ft') for i in self.driver.find_elements_by_css_selector('._56be._4hkg._5rgr._3drq.async_like')]

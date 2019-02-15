@@ -11,7 +11,6 @@ import pandas as pd
 def Get_Engagements(driver, page, post_id):
     base_url = "https://www.facebook.com/"
     driver.get(base_url + page + '/posts/' + post_id)
-    # driver.get("https://www.facebook.com/MyproteinTW/posts/755731094809744")
     try:
         ele = driver.find_element_by_class_name('_37uu')
         engagements = [i.text for i in driver.find_elements_by_css_selector('._524d>a>span')]
@@ -23,8 +22,6 @@ def Get_Engagements(driver, page, post_id):
         return None
 
 # get files dir
-files_path = os.getcwd() + '/postid_files/'
-# file_list = os.listdir(files_path)
 csv_list = glob.glob("postid_files/*.csv")
 
 chrome_options = webdriver.ChromeOptions()

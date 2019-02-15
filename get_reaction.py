@@ -28,7 +28,6 @@ def Get_Reaction(driver, page, post_id):
     driver.get(base_url + post_id)
     sleep(randint(1,2))
     reaction = [i.get_attribute('href') for i in driver.find_elements_by_class_name('ba')]
-    # print(reaction)
     reaction_types = ['Total', '1', '2', '3', '4', '7', '8']
     react_dict = dict((el, 0) for el in reaction_types)
     for r in reaction:
@@ -42,7 +41,6 @@ def Get_Reaction(driver, page, post_id):
     return react_dict
 
 # get files dir
-files_path = os.getcwd() + '/postid_files/'
 csv_list = glob.glob("postid_files/*.csv")
 
 for f in csv_list:

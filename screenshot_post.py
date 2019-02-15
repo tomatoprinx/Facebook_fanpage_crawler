@@ -20,8 +20,6 @@ def catch_screen(driver, page, post_id, path):
 
 
 # get files dir
-files_path = os.getcwd() + '/postid_files/'
-# file_list = os.listdir(files_path)
 csv_list = glob.glob("postid_files/*.csv")
 
 chrome_options = webdriver.ChromeOptions()

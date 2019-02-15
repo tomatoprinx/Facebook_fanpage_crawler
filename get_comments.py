@@ -81,7 +81,6 @@ chrome_options.add_argument("--start-maximized");
 driver = webdriver.Chrome("../driver/chromedriver", options=chrome_options)
 
 # get files dir
-files_path = os.getcwd() + '/postid_files/'
 csv_list = glob.glob("postid_files/*.csv")
 
 for f in csv_list:
