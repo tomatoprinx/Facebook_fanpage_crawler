@@ -55,14 +55,14 @@ if __name__ =='__main__':
     postid_scraper = FacebookPostIdScraper()
     
     # set a date for scraper to catch post published between its timestamp
-    begin_date = "2018-12-31"
-    end_date = "2019-01-25"
+    begin_date = "2018-12-01"
+    end_date = "2019-03-01"
     begin_catch_time = int(time.mktime(time.strptime(begin_date, "%Y-%m-%d")))
     end_catch_time = int(time.mktime(time.strptime(end_date, "%Y-%m-%d")))
 
-    with open('page_list/fanpages.txt') as f:
+    with open('page_list/test.txt') as f:
         page_list = f.readlines()
     page_list = [i.strip() for i in page_list]
     for page in page_list:
         feed_df = postid_scraper.get_post_id(page, begin_catch_time, end_catch_time)
-        feed_df.to_csv('postid_files/' + page + '_postid2.csv', encoding='utf-8-sig', index=False)
+        feed_df.to_csv('postid_files/' + page + '_postid.csv', encoding='utf-8-sig', index=False)
