@@ -22,4 +22,4 @@ scipy==1.1.0
 selenium==3.141.0
 six==1.11.0
 tornado==5.1.1
-urllib3==1.24.1
+urllib3==1.24.2
